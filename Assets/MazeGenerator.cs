@@ -159,14 +159,7 @@ public class MazeGenerator : MonoBehaviour
         // Set the position of the sphere to the randomly generated coordinates
         sphere.transform.position = new Vector3(randomX, 0, randomZ);
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject == sphere && lastRedNode != null)
-        {
-            Debug.Log("Sphere touched the last red node!");
-            // Trigger any desired action here
-        }
-    }
+    
     IEnumerator GenerateMaze(Vector2Int size)
     {
         List<MazeNode> nodes = new List<MazeNode>();
