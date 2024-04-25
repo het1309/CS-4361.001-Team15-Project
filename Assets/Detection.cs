@@ -20,9 +20,10 @@ public class Detection : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.GetComponentInParent<MazeNode>().GetState() == NodeState.End)
+
+        if(collision.gameObject.GetComponentInParent<MazeNode>().GetState() == NodeState.End && collision.gameObject.name == "Floor")
         {
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene("GameOver");
         }
     }
 }
