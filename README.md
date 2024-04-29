@@ -16,14 +16,13 @@ The main objective of the Marble game is for players to navigate a three-dimensi
 
 ## Usage
 
-1. **Detection Script Setup:**
-   - In Unity, navigate to the Detection Script.
-   - Drag and drop the MazeNode prefab onto the Inspector box of the Detection Script.
-
-2. **Scene Setup:**
+1. **Scene Setup:**
    - Navigate to the "Scenes" folder in the project's assets.
    - Open the SampleScene window.
    - Click on the MazeGenerator object.
    - In the Inspector box on the left side, find the Rigidbody component of the MazeGenerator.
-   - Set the "Interpolate" option to either "None" or "Interpolate" as needed.
+   - Set the "Interpolate" option to "None" if it is not set by default. Only change that option to "Interpolate" if needed.
 
+2. **Scoring Calculation:**
+   - By default, we have set 1000000 points as max score. The max points are divided by time taken to exit the maze.
+   - The logic behind the scoring system is that the faster you solve the maze the more points you are awarded.
