@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class PlayGame : MonoBehaviour
 {
+    [SerializeField] Score score;
     // Start is called before the first frame update
     public void NextScene()
     {
+        score.score = Score.MAX_SCORE;
         SceneManager.LoadScene("SampleScene");
     }
 
