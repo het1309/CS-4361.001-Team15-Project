@@ -10,9 +10,9 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] GameObject spherePrefab;
 
     private MazeNode lastRedNode;
-    
-    private GameObject sphere;
-    
+
+    private GameObject spherePrefabInstance;
+
     private void Start()
     {
         GenerateMazeInstant(mazeSize);
@@ -29,9 +29,8 @@ public class MazeGenerator : MonoBehaviour
         {
             for (int y = 0; y < size.y; y++)
             {
-                //Vector3 nodePos = new Vector3(x - (size.x / 2f), 0, y - (size.y / 2f));
-                Vector3 nodePos = new Vector3(x + (nodeSize / 2f), 0, y + (nodeSize / 2f));
-                MazeNode newNode = Instantiate(nodePrefab, nodePos, Quaternion.identity, transform);
+                Vector3 nodePosition = new Vector3(x + (nodeSize / 2f), 0, y + (nodeSize / 2f));
+                MazeNode newNode = Instantiate(nodePrefab, nodePosition, Quaternion.identity, transform);
                 nodes.Add(newNode);
                 if (newNode.GetState() == NodeState.End)
                 {
@@ -46,7 +45,7 @@ public class MazeGenerator : MonoBehaviour
         // Choose starting node
         currentPath.Add(nodes[Random.Range(0, nodes.Count)]);
         currentPath[0].SetState(NodeState.Current);
-        
+
         while (completedNodes.Count < nodes.Count)
         {
             // Check nodes next to the current node
@@ -146,20 +145,21 @@ public class MazeGenerator : MonoBehaviour
             }
         }
     }
+
     void SetSpherePositionRandomly()
     {
         // Instantiate the sphere prefab
-        GameObject sphere = Instantiate(spherePrefab, Vector3.zero, Quaternion.identity);
-        sphere.AddComponent<SphereCollider>().isTrigger = true;
+        spherePrefabInstance = Instantiate(spherePrefab, Vector3.zero, Quaternion.identity);
+        spherePrefabInstance.AddComponent<SphereCollider>().isTrigger = true;
 
         // Generate random coordinates within the bounds of the maze
         float randomX = UnityEngine.Random.Range(0, mazeSize.x) + (nodeSize / 2f);
         float randomZ = UnityEngine.Random.Range(0, mazeSize.y) + (nodeSize / 2f);
 
         // Set the position of the sphere to the randomly generated coordinates
-        sphere.transform.position = new Vector3(randomX, 0, randomZ);
+        spherePrefabInstance.transform.position = new Vector3(randomX, 0, randomZ);
     }
-    
+
     IEnumerator GenerateMaze(Vector2Int size)
     {
         List<MazeNode> nodes = new List<MazeNode>();
@@ -197,7 +197,7 @@ public class MazeGenerator : MonoBehaviour
             if (currentNodeX < size.x - 1)
             {
                 // Check node to the right of the current node
-                if (!completedNodes.Contains(nodes[currentNodeIndex + size.y]) && 
+                if (!completedNodes.Contains(nodes[currentNodeIndex + size.y]) &&
                     !currentPath.Contains(nodes[currentNodeIndex + size.y]))
                 {
                     possibleDirections.Add(1);
