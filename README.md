@@ -2,7 +2,7 @@
 
 ## Overview
 
-Briefly describe what your project does and its purpose.
+The main objective of the Marble game is for players to navigate a three-dimensional maze using a marble, overcoming obstacles, avoiding pitfalls, and reaching the exit as quickly as possible. The challenge lies in mastering the physics-based controls, strategic decision-making, and precision to complete each maze within a given time limit. Players aim to achieve the best possible score by completing levels swiftly and efficiently, utilizing a balance of speed and accuracy in their marble navigation skills. The increasing complexity of maze designs and obstacles adds depth to the gameplay, ensuring a progressively challenging and engaging experience for players.
 
 ## Installation
 
