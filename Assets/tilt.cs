@@ -15,19 +15,19 @@ public class NewBehaviourScript : MonoBehaviour
     void Update()
     {
         currentRot = GetComponent<Transform> ().eulerAngles;
-       if((Input.GetAxis("Horizontal") > .1) && (currentRot.z >=351 || currentRot.z <=9 ))
+       if((Input.GetAxis("Horizontal") > .1) && (currentRot.z >=351 || currentRot.z <= 10 ))
        {
         transform.Rotate(0, 0, -1);
        } 
-       if((Input.GetAxis("Horizontal") < -.1) && (currentRot.z <=8 || currentRot.z >= 350))
+       if((Input.GetAxis("Horizontal") < -.1) && (currentRot.z <=8 || currentRot.z >= 349))
        {
         transform.Rotate(0, 0, 1);
        }
-       if((Input.GetAxis("Vertical") > .1) && (currentRot.x <=8 || currentRot.x >= 350))
+       if((Input.GetAxis("Vertical") > .1) && (currentRot.x <=8 || currentRot.x >= 349))
        {
         transform.Rotate(1, 0, 0);
        } 
-       if((Input.GetAxis("Vertical") < -.1) && (currentRot.x >=351 || currentRot.x <= 9))
+       if((Input.GetAxis("Vertical") < -.1) && (currentRot.x >=351 || currentRot.x <= 10))
        {
         transform.Rotate(-1, 0, 0);
        }
