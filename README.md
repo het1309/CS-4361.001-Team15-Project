@@ -19,12 +19,10 @@ The main objective of the Marble game is for players to navigate a three-dimensi
    - In the Inspector box on the left side, find the Rigidbody component of the MazeGenerator.
    - Set the "Interpolate" option to "None" if it is not set by default. Only change that option to "Interpolate" if needed.
 
-4. **Scoring Calculation logic:**
-   - By default, we have set 1000000 points as max score. The max points are divided by time taken to exit the maze.
-   - The logic behind the scoring system is that the faster you solve the maze the more points you are awarded.
+4. **Launching the Game:**
+   - Navigate to the Menu Scene to initiate the game.
+   - Click on the "Play" button to begin gameplay.
 
-5. **How to start the Game:**
-   - Open the Menu Scene whenever you want to start the game.
-   - Then start the game by clicking the Play button.
-   - Adjust the window size of scene as you needed.
-   - Also adjust the main camera dimensions based on the maze you want to generate by using X and Y values.
+5. **Adjusting Scene and Camera Settings:**
+   - Resize the window of the scene as per your preference for optimal viewing.
+   - Modify the dimensions of the main camera according to the maze generation requirements by adjusting the X and Y values.
