@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using static System.Math;
 using UnityEngine;
 
 public class MazeGenerator : MonoBehaviour
@@ -10,6 +11,7 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] GameObject spherePrefab;
 
     private MazeNode lastRedNode;
+    private Vector3 lastNodePosition;
 
     private GameObject spherePrefabInstance;
 
@@ -134,6 +136,8 @@ public class MazeGenerator : MonoBehaviour
                     // Handle the last node (set a different material, etc.)
                     completedNodes.Add(currentPath[currentPath.Count - 1]);
                     currentPath[currentPath.Count - 1].SetState(NodeState.End);
+                    lastRedNode = currentPath[currentPath.Count - 1];
+                    lastNodePosition = lastRedNode.transform.position;
                 }
                 else
                 {
@@ -153,8 +157,12 @@ public class MazeGenerator : MonoBehaviour
         spherePrefabInstance.AddComponent<SphereCollider>().isTrigger = true;
 
         // Generate random coordinates within the bounds of the maze
-        float randomX = UnityEngine.Random.Range(0, mazeSize.x) + (nodeSize / 2f);
-        float randomZ = UnityEngine.Random.Range(0, mazeSize.y) + (nodeSize / 2f);
+        float randomX;
+        float randomZ;
+        do {
+            randomX = UnityEngine.Random.Range(0, mazeSize.x) + (nodeSize / 2f);
+            randomZ = UnityEngine.Random.Range(0, mazeSize.y) + (nodeSize / 2f);
+        } while(Pow(randomX - lastNodePosition.x, 2) + Pow(randomZ - lastNodePosition.z, 2) < Pow((mazeSize.x + mazeSize.y)/5, 2));
 
         // Set the position of the sphere to the randomly generated coordinates
         spherePrefabInstance.transform.position = new Vector3(randomX, 0, randomZ);
